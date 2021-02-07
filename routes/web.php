@@ -22,6 +22,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth:sanctum', 'verified'])
     ->name('dashboard');
 
-Route::get('/organizations', [OrganizationController::class, 'index'])
-    ->middleware(['auth:sanctum', 'verified'])
-    ->name('organizations.index');
+Route::prefix('/organizations')->middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/', [OrganizationController::class, 'index'])->name('organizations.index');
+    Route::get('/create', [OrganizationController::class, 'create'])->name('organizations.create');
+    Route::post('/', [OrganizationController::class, 'store'])->name('organizations.store');
+});

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Organization;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class OrganizationController extends Controller
@@ -25,5 +26,28 @@ class OrganizationController extends Controller
             'filters' => request()->only(['search', 'sortField', 'sortOrder']),
             'organizations' => $organizations
         ]);
+    }
+
+    public function create()
+    {
+        return Inertia::render('Organization/Create');
+    }
+
+    public function store()
+    {
+        $validatedData = request()->validate([
+            'name' => 'required',
+            'email' => ['required', 'email', 'unique:organizations'],
+            'phone' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'region' => 'required',
+            'country' => ['required', 'in:CA,US'],
+            'postal_code' => 'required',
+        ]);
+
+        Auth::user()->account->organizations()->create($validatedData);
+
+        return redirect()->route('organizations.index')->with('success', 'Organization created.');
     }
 }

@@ -19,14 +19,14 @@
               <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <jet-nav-link
                   :href="route('dashboard')"
-                  :active="route().current('dashboard')"
+                  :active="isUrl('dashboard')"
                 >
                   Dashboard
                 </jet-nav-link>
 
                 <jet-nav-link
                   :href="route('organizations.index')"
-                  :active="route().current('organizations.index')"
+                  :active="isUrl('organizations')"
                 >
                   Organization
                 </jet-nav-link>
@@ -423,6 +423,15 @@ export default {
 
     logout() {
       this.$inertia.post(route("logout"));
+    },
+
+    isUrl(...urls) {
+      if (urls[0] === "") {
+        return this.url === "";
+      }
+
+      return urls.filter(url => location.pathname.substr(1).startsWith(url))
+        .length;
     }
   }
 };
