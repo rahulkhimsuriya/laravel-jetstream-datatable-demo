@@ -133,7 +133,14 @@
                 </div>
               </div>
 
-              <div class="flex items-center justify-end pt-6 pb-4 text-right">
+              <div
+                class="flex items-center justify-between pt-6 pb-4 text-right"
+              >
+                <delete-organization-button
+                  :organizationId="organization.id"
+                  variant="outline"
+                />
+
                 <jet-button
                   :class="{ 'opacity-25': form.processing }"
                   :disabled="form.processing"
@@ -151,7 +158,9 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
+import DeleteOrganizationButton from "./Delete";
 import JetButton from "@/Jetstream/Button";
+import JetDangerButton from "@/Jetstream/DangerButton";
 import JetFormSection from "@/Jetstream/FormSection";
 import JetInput from "@/Jetstream/Input";
 import JetInputError from "@/Jetstream/InputError";
@@ -166,8 +175,10 @@ export default {
 
   components: {
     AppLayout,
+    DeleteOrganizationButton,
     JetActionMessage,
     JetButton,
+    JetDangerButton,
     JetFormSection,
     JetInput,
     JetInputError,

@@ -28,4 +28,5 @@ Route::prefix('/organizations')->middleware(['auth:sanctum', 'verified'])->group
     Route::post('/', [OrganizationController::class, 'store'])->name('organizations.store');
     Route::get('/{organization}/edit', [OrganizationController::class, 'edit'])->name('organizations.edit');
     Route::put('/{organization}', [OrganizationController::class, 'update'])->name('organizations.update');
+    Route::delete('/{organization}', [OrganizationController::class, 'destroy'])->name('organizations.destroy');
 });

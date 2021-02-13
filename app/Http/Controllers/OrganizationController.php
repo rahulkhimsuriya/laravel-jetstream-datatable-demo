@@ -75,4 +75,11 @@ class OrganizationController extends Controller
 
         return redirect()->route('organizations.index')->with('success', 'Organization updated.');
     }
+
+    public function destroy(Organization $organization)
+    {
+        $organization->delete();
+
+        return redirect()->route('organizations.index')->with('success', 'Organization deleted.');
+    }
 }
