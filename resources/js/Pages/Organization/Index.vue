@@ -53,7 +53,7 @@
           <div class="bg-white overflow-hidden shadow sm:rounded-lg">
             <app-table :class="{ 'animate-pulse': loading }">
               <template #head>
-                <table-row>
+                <table-row :heading="true">
                   <table-heading
                     fieldName="name"
                     :sortable="true"
@@ -97,20 +97,24 @@
                       </div>
 
                       <div class="text-sm text-gray-500">
-                        <svg
-                          class="w-6 h-6"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
+                        <inertia-link
+                          :href="route('organizations.edit', organization.id)"
                         >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
+                          <svg
+                            class="w-6 h-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        </inertia-link>
                       </div>
                     </div>
                   </table-cell>

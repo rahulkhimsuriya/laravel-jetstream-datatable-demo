@@ -50,4 +50,29 @@ class OrganizationController extends Controller
 
         return redirect()->route('organizations.index')->with('success', 'Organization created.');
     }
+
+    public function edit(Organization $organization)
+    {
+        return Inertia::render('Organization/Edit', [
+            'organization' => $organization
+        ]);
+    }
+
+    public function update(Organization $organization)
+    {
+        $validatedData = request()->validate([
+            'name' => 'required',
+            'email' => ['required', 'email', 'unique:organizations,id,' . $organization->id],
+            'phone' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'region' => 'required',
+            'country' => ['required', 'in:CA,US'],
+            'postal_code' => 'required',
+        ]);
+
+        $organization->update($validatedData);
+
+        return redirect()->route('organizations.index')->with('success', 'Organization updated.');
+    }
 }

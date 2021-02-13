@@ -26,4 +26,6 @@ Route::prefix('/organizations')->middleware(['auth:sanctum', 'verified'])->group
     Route::get('/', [OrganizationController::class, 'index'])->name('organizations.index');
     Route::get('/create', [OrganizationController::class, 'create'])->name('organizations.create');
     Route::post('/', [OrganizationController::class, 'store'])->name('organizations.store');
+    Route::get('/{organization}/edit', [OrganizationController::class, 'edit'])->name('organizations.edit');
+    Route::put('/{organization}', [OrganizationController::class, 'update'])->name('organizations.update');
 });
