@@ -44,6 +44,7 @@
                   <jet-input-error :message="form.errors.email" class="mt-2" />
                 </div>
 
+                <!-- Phone Number -->
                 <div class="w-full">
                   <jet-label for="phone" value="Phone" />
                   <jet-input
@@ -56,6 +57,7 @@
                   <jet-input-error :message="form.errors.phone" class="mt-2" />
                 </div>
 
+                <!-- Address -->
                 <div class="w-full">
                   <jet-label for="address" value="Address" />
                   <jet-input
@@ -71,6 +73,7 @@
                   />
                 </div>
 
+                <!-- City -->
                 <div class="w-full">
                   <jet-label for="city" value="City" />
                   <jet-input
@@ -83,6 +86,7 @@
                   <jet-input-error :message="form.errors.city" class="mt-2" />
                 </div>
 
+                <!-- State -->
                 <div class="w-full">
                   <jet-label for="state" value="Province/State" />
                   <jet-input
@@ -95,6 +99,7 @@
                   <jet-input-error :message="form.errors.region" class="mt-2" />
                 </div>
 
+                <!-- Country -->
                 <div class="w-full">
                   <jet-label for="country" value="Country" />
                   <select
@@ -111,6 +116,7 @@
                   />
                 </div>
 
+                <!-- Postal Code -->
                 <div class="w-full">
                   <jet-label for="postal_code" value="Postal Code" />
                   <jet-input
