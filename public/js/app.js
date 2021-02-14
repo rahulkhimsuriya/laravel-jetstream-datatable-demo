@@ -5486,7 +5486,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "OrganizationIndex",
+  name: 'OrganizationIndex',
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_1__.default,
@@ -5498,7 +5498,7 @@ __webpack_require__.r(__webpack_exports__);
     Pagination: _Components_Pagination_vue__WEBPACK_IMPORTED_MODULE_7__.default,
     AlertMessage: _Components_AlertMessage__WEBPACK_IMPORTED_MODULE_8__.default
   },
-  props: ["filters", "organizations"],
+  props: ['filters', 'organizations'],
   data: function data() {
     return {
       loading: false,
@@ -5513,7 +5513,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     form: {
-      handler: "handleSortSearch",
+      handler: 'handleSortSearch',
       deep: true
     }
   },
@@ -5543,11 +5543,11 @@ __webpack_require__.r(__webpack_exports__);
         }
       };
 
-      if (this.form.search != "") {
+      if (this.form.search != '') {
         data.search = this.form.search;
       }
 
-      this.$inertia.get(route("organizations.index"), data, options);
+      this.$inertia.get(route('organizations.index'), data, options);
     }
   }
 });
@@ -36319,7 +36319,7 @@ var render = function() {
                                   "table-heading",
                                   {
                                     attrs: {
-                                      fieldName: "email",
+                                      fieldName: "city",
                                       sortable: true
                                     },
                                     on: { sorted: _vm.onSort }
@@ -36335,7 +36335,7 @@ var render = function() {
                                   "table-heading",
                                   {
                                     attrs: {
-                                      fieldName: "role",
+                                      fieldName: "phone",
                                       sortable: true
                                     },
                                     on: { sorted: _vm.onSort }

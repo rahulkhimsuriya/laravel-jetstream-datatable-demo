@@ -62,14 +62,14 @@
                     Name
                   </table-heading>
                   <table-heading
-                    fieldName="email"
+                    fieldName="city"
                     :sortable="true"
                     @sorted="onSort"
                   >
                     City
                   </table-heading>
                   <table-heading
-                    fieldName="role"
+                    fieldName="phone"
                     :sortable="true"
                     @sorted="onSort"
                   >
@@ -131,87 +131,87 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import JetButton from "@/Jetstream/Button";
-import JetInput from "@/Jetstream/Input";
-import AppTable from "@/Components/table/Table";
-import TableRow from "@/Components/table/Row";
-import TableHeading from "@/Components/table/Heading";
-import TableCell from "@/Components/table/Cell";
-import Pagination from "@/Components/Pagination.vue";
-import AlertMessage from "@/Components/AlertMessage";
+  import AppLayout from '@/Layouts/AppLayout';
+  import JetButton from '@/Jetstream/Button';
+  import JetInput from '@/Jetstream/Input';
+  import AppTable from '@/Components/table/Table';
+  import TableRow from '@/Components/table/Row';
+  import TableHeading from '@/Components/table/Heading';
+  import TableCell from '@/Components/table/Cell';
+  import Pagination from '@/Components/Pagination.vue';
+  import AlertMessage from '@/Components/AlertMessage';
 
-export default {
-  name: "OrganizationIndex",
+  export default {
+    name: 'OrganizationIndex',
 
-  components: {
-    AppLayout,
-    JetButton,
-    JetInput,
-    AppTable,
-    TableRow,
-    TableHeading,
-    TableCell,
-    Pagination,
-    AlertMessage
-  },
-
-  props: ["filters", "organizations"],
-
-  data() {
-    return {
-      loading: false,
-      form: {
-        search: this.filters.search,
-        sort: {
-          sortField: this.filters.sortField,
-          sortOrder: this.filters.sortOrder
-        }
-      }
-    };
-  },
-
-  watch: {
-    form: {
-      handler: "handleSortSearch",
-      deep: true
-    }
-  },
-
-  methods: {
-    reset() {
-      this.form = mapValues(this.form, () => null);
+    components: {
+      AppLayout,
+      JetButton,
+      JetInput,
+      AppTable,
+      TableRow,
+      TableHeading,
+      TableCell,
+      Pagination,
+      AlertMessage,
     },
 
-    onSort(data) {
-      this.form.sort = data;
+    props: ['filters', 'organizations'],
 
-      this.handleSortSearch();
-    },
-
-    handleSortSearch() {
-      const data = this.form.sort;
-
-      const options = {
-        replace: true,
-        preserveState: true,
-        preserveScroll: true,
-        onStart: visit => {
-          this.loading = true;
+    data() {
+      return {
+        loading: false,
+        form: {
+          search: this.filters.search,
+          sort: {
+            sortField: this.filters.sortField,
+            sortOrder: this.filters.sortOrder,
+          },
         },
-        onFinish: () => {
-          this.loading = false;
-        }
       };
+    },
 
-      if (this.form.search != "") {
-        data.search = this.form.search;
-      }
+    watch: {
+      form: {
+        handler: 'handleSortSearch',
+        deep: true,
+      },
+    },
 
-      this.$inertia.get(route("organizations.index"), data, options);
-    }
-  }
-};
+    methods: {
+      reset() {
+        this.form = mapValues(this.form, () => null);
+      },
+
+      onSort(data) {
+        this.form.sort = data;
+
+        this.handleSortSearch();
+      },
+
+      handleSortSearch() {
+        const data = this.form.sort;
+
+        const options = {
+          replace: true,
+          preserveState: true,
+          preserveScroll: true,
+          onStart: (visit) => {
+            this.loading = true;
+          },
+          onFinish: () => {
+            this.loading = false;
+          },
+        };
+
+        if (this.form.search != '') {
+          data.search = this.form.search;
+        }
+
+        this.$inertia.get(route('organizations.index'), data, options);
+      },
+    },
+  };
 </script>
 
 <style scoped></style>
