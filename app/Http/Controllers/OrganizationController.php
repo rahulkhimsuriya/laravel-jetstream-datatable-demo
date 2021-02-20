@@ -62,7 +62,7 @@ class OrganizationController extends Controller
     {
         $validatedData = request()->validate([
             'name' => 'required',
-            'email' => ['required', 'email', 'unique:organizations,id,' . $organization->id],
+            'email' => ['required', 'email', 'unique:organizations,email,' . $organization->id],
             'phone' => 'required',
             'address' => 'required',
             'city' => 'required',
